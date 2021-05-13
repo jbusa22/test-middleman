@@ -23,9 +23,9 @@ async function retrieve() {
     client.ftp.verbose = true
     try {
         await client.access({
-            host: "ftp.addicosolutions.com",
-            user: "serendipity",
-            password: "$3r3nd1p1ty509",
+            host: process.env.server,
+            user: process.env.username,
+            password: process.env.password,
             secure: false
         })
         var files = await client.list()
