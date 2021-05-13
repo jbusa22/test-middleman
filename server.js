@@ -8,9 +8,9 @@ const router = express.Router()
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
-app.listen(3000, (err) => {
+app.listen(8080, (err) => {
     if (err) throw err
-    console.log('Server running in http://127.0.0.1:3000')
+    console.log('Server running in http://127.0.0.1:8080')
 })
 
 function blah (req, res)  {
