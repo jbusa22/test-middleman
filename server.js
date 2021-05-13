@@ -8,10 +8,12 @@ const router = express.Router()
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
-app.listen(8080, (err) => {
-    if (err) throw err
-    console.log('Server running in http://127.0.0.1:8080')
-})
+
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 8000;
+}
+app.listen(port);
 
 function blah (req, res)  {
     const menu = {
