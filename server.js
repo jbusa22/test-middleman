@@ -79,7 +79,7 @@ async function updates (req, res)  {
 router.post('/handle',(request,response) => {
 //code to perform particular action.
 //To access POST variable use req.body()methods.
-console.log(request.body);
+console.log(request);
 });
 
 router.get('/', updates)
