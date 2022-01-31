@@ -1,13 +1,14 @@
 const express = require('express')
 const ftp = require("basic-ftp")
+const bodyParser = require("body-parser");
 const csv=require('csvtojson')
 // const fs = require('fs')
 
 const app = express()
 const router = express.Router()
 
-app.use(express.urlencoded({ extended: true }))
-app.use(express.json())
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 
 let port = process.env.PORT;
@@ -74,6 +75,12 @@ async function retrieve() {
 async function updates (req, res)  {
     return res.status(200).json({"updates": "testing"})
 }
+
+router.post('/handle',(request,response) => {
+//code to perform particular action.
+//To access POST variable use req.body()methods.
+console.log(request.body);
+});
 
 router.get('/', updates)
 app.use('/updates', router)
