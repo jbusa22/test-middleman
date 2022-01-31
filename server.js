@@ -80,6 +80,7 @@ router.post('/handle',(request,response) => {
 //code to perform particular action.
 //To access POST variable use req.body()methods.
 console.log(request);
+  return response.status(200).json({"done": "testing"})
 });
 
 router.get('/', updates)
