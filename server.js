@@ -72,7 +72,7 @@ async function retrieve() {
 
 
 async function updates (req, res)  {
-    return res.status(200).json({"updates": await retrieve()})
+    return res.status(200).json({"updates": "testing"})
 }
 
 router.get('/', updates)
