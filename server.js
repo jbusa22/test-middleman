@@ -18,6 +18,7 @@ if (port == null || port == "") {
 console.log(port)
 app.listen(port);
 
+var newest_hr = 0.0;
 
 async function retrieve() {
     const client = new ftp.Client()
@@ -70,18 +71,22 @@ async function retrieve() {
     }
     client.close()
 }
-
-
-async function updates (req, res)  {
-    return res.status(200).json({"updates": "testing"})
+async function send_hr (req, res)  {
+    return res.status(200).json({"hr": newest_hr})
 }
 
-router.post('/handle',(request,response) => {
-//code to perform particular action.
-//To access POST variable use req.body()methods.
-console.log(request.body);
-  return response.status(200).json({"done": "testing"})
-});
+async function updates (req, res)  {
+    newest_hr = req.query.hr;
+    return res.status(200).json({"updates": "stored"})
+}
+
+// router.post('/handle',(request,response) => {
+// //code to perform particular action.
+// //To access POST variable use req.body()methods.
+// console.log(request.body);
+//   return response.status(200).json({"done": "testing"})
+// });
 
 router.get('/', updates)
+router.get('/recent', send_hr)
 app.use('/updates', router)
